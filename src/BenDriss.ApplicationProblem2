@@ -1,0 +1,68 @@
+from math import sqrt
+
+
+def triangle_id(adjacent, opposite, hypotenuse ,sides : tuple) -> str:
+
+    """
+        pre-condition: sides is a 3-tuple containing three non-negative lengths
+        post-condition: returns a string characterizing a triangle with sides of those 3 lengths. Options are:
+        invalid
+        scalene
+        isosceles
+        equilateral
+        right scalene
+        right isosceles
+        right equilateral
+        :rtype: object
+    """
+
+   # adjacent, opposite, hypotenuse = sides # tuples unpacking
+    triangle_type = ''  # local var to return it as string
+
+    #   Equilateral property
+
+    if adjacent == opposite and opposite == hypotenuse:
+        triangle_type = 'Triangle is Equilateral.'
+        #print(triangle_type)
+        return triangle_type
+    elif hypotenuse == sqrt((opposite ** 2) + (adjacent ** 2)):
+        triangle_type = 'Right Equilateral'
+       # print(triangle_type)
+        return triangle_type
+
+    #   Isosceles property
+
+    elif adjacent == opposite or opposite == hypotenuse or adjacent == hypotenuse:
+        triangle_type = 'Triangle is Isosceles.'
+        #print(triangle_type)
+        return triangle_type
+    elif hypotenuse == sqrt((opposite ** 2) + (adjacent ** 2)):
+        triangle_type = 'Right Isosceles'
+       # print(triangle_type)
+        return triangle_type
+
+    #   Isosceles property
+
+    elif hypotenuse == sqrt((opposite ** 2) + (adjacent ** 2)):
+        triangle_type = 'Right Scalene'
+        #print(triangle_type)
+        return triangle_type
+
+    else:
+        triangle_type = 'Triangle is Scalene'
+       # print(triangle_type)
+        return triangle_type
+
+
+def main(sides=None):
+    adjacent = float(input("insert your adjacent"))
+    opposite = float(input("insert your opposite "))
+    hypotenuse = float(input("insert your hypotenuse"))
+
+    
+
+    print(triangle_id(adjacent, opposite, hypotenuse,sides ))
+
+
+if __name__ == '__main__':
+    main()
